@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BeneCoASP.Migrations
@@ -96,6 +97,9 @@ namespace BeneCoASP.Migrations
                 name: "IX_Job_StaffCode",
                 table: "Job",
                 column: "StaffCode");
+            var sqlFile = Path.Combine(".\\script", @"BeneCo.sql");
+
+            migrationBuilder.Sql(File.ReadAllText(sqlFile));
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
